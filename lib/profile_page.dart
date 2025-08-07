@@ -27,6 +27,7 @@ class _ProfilePageState extends State<ProfilePage> {
         await SharedPreferences.getInstance(); // object created
     name = sharePreference.getString("Name").toString();
     email = sharePreference.getString("Email").toString();
+   // sharePreference.getBool("login_status")??false;
     setState(() {});
   }
 
@@ -178,7 +179,9 @@ class _ProfilePageState extends State<ProfilePage> {
                         backgroundColor: Colors.blue,
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(5))),
-                    onPressed: () {
+                    onPressed: () async{
+                      var sp=await SharedPreferences.getInstance();
+                      sp.setBool("login_status", false);
                       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginPage(),));
                     },
                     child: Text(

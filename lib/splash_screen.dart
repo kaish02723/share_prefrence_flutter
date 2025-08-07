@@ -19,28 +19,27 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    getEmail();
+  }
+
+
+  getEmail() async {
+    var shareP = await SharedPreferences.getInstance();
+    var status=shareP.getBool("login_status")??false;
     Timer(
       Duration(seconds: 2),
-      () {
+          () {
         Navigator.pushReplacement(context, MaterialPageRoute(
           builder: (context) {
-            if (email.isEmpty) {
-             return LoginPage();
+            if (status) {
+              return ProfilePage();
             } else {
-            return ProfilePage();
+              return LoginPage();
             }
           },
         ));
       },
     );
-    getEmail();
-  }
-
-  var email = "";
-
-  getEmail() async {
-    var shareP = await SharedPreferences.getInstance();
-    email = shareP.getString("Email")!;
   }
 
   @override

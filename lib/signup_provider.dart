@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:share_prefrence_flutter/login_page.dart';
 import 'package:share_prefrence_flutter/profile_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -20,10 +21,11 @@ class SignupProvider with ChangeNotifier{
           "Email", emailController.text.toString());
       sharePrefrence.setString("Password",
           passwordController.text.toString());
+      sharePrefrence.setBool("login_status", true);
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => ProfilePage(),
+            builder: (context) => LoginPage(),
           ));
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(
