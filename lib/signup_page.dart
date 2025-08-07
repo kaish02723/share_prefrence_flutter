@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:share_prefrence_flutter/ProviderController/theme_mode_provider.dart';
 import 'package:share_prefrence_flutter/login_page.dart';
 import 'package:share_prefrence_flutter/profile_page.dart';
-import 'package:share_prefrence_flutter/signup_provider.dart';
+import 'package:share_prefrence_flutter/ProviderController/signup_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignupPage extends StatefulWidget {
@@ -17,9 +18,9 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     var _providerSignup = Provider.of<SignupProvider>(context);
+    var _providerThemeManage = Provider.of<ThemeChangeProvider>(context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.blue,
         leading: InkWell(
@@ -39,6 +40,13 @@ class _SignupPageState extends State<SignupPage> {
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                _providerThemeManage.clickManageTheme();
+              },
+              icon: Icon(_providerThemeManage.currentTheme==ThemeMode.light ? Icons.dark_mode : Icons.sunny))
+        ],
       ),
       body: SingleChildScrollView(
         child: Center(

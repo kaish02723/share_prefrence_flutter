@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:share_prefrence_flutter/login_provider.dart';
+import 'package:share_prefrence_flutter/ProviderController/login_provider.dart';
 import 'package:share_prefrence_flutter/profile_page.dart';
 import 'package:share_prefrence_flutter/signup_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
